@@ -8,9 +8,12 @@ m04:
 	time python -m src.main04
 m05:
 	time python -m src.main05
+m06:
+	time python -m src.main06
 all:
 	time python -m src.main01
 	time python -m src.main02
 	time python -m src.main03
 	time python -m src.main04
 	time python -m src.main05
+	time python -m src.main06

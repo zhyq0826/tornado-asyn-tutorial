@@ -10,11 +10,11 @@
 
 由于是异步执行，执行完成的时间取决于当前执行的操作，在例子中，优先显示结果的是响应速度更快的请求。
 
-对比 main01 的执行时间，main02 的执行时间稍微短一些(多次执行统计结果)。
+对比 main01 的执行时间，main02 的执行时间稍微短一些(多次执行统计平均值)。
 
 ### main03
 
-示例中的异步调用返回的是一个 future，为 future 注册一个调用完成之后执行的回调函数，future 执行完成之后，回调函数被执行，参数是一个状态为 done 的 future。
+示例中的异步调用返回的是一个 future，为 future 注册一个调用完成之后的回调函数，future 执行完成之后，回调函数被执行，参数是一个状态为 done 的 future。
 
 **如何理解 future ？**
 
@@ -28,6 +28,8 @@ future 可以有不同的状态来表明当前执行的状况什么，future 也
 
 
 ### main04
+
+https://tornado.readthedocs.io/en/stable/gen.html
 
 示例通过 tornado 实现的 coroutine 装饰器返回 future，这样可以像写同步的方式来实现异步的执行，代码可读性更强，更容易理解。
 
@@ -50,6 +52,26 @@ coroutine 装饰器会让调用函数（生成器函数）返回 future，在调
 
 在 coroutine 装饰的函数中，yield 对象必须是个 future，而且这个 future 必须要能够解析或者在适当的时候失败，不然这个 future 将一直挂起
 
+### main06
+
+https://tornado.readthedocs.io/en/stable/guide/coroutines.html
+
+示例展示了 coroutine 中的异常处理
+
+Coroutines do not raise exceptions in the normal way: any exception they raise will be trapped in the Future until it is yielded. This means it is important to call coroutines in the right way, or you may have errors that go unnoticed
+
+coroutine 不会以常规的方式抛出异常，异常只有在 future is yielded 时才会出现，如果不注意 coroutine 的使用方式，可能会错过异常
+
+比如示例中的 bad_call 调用，看不到异常的出现。
+
+In nearly all cases, any function that calls a coroutine must be a coroutine itself, 
+and use the yield keyword in the call
+
+注意在任何调用 coroutine 的函数本身必须是 coroutine，而且要在调用中使用 yield ，示例中 good_call 中调用 divide ，那么 good_call 本身也必须是 coroutine。
+
+https://tornado.readthedocs.io/en/stable/concurrent.html#consumer-methods
+
+如果发生异常，调用 future.result 会再次把异常抛出，如果调用 future exception 则只是返回异常
 
 
 
