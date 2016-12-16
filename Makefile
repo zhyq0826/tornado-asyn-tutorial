@@ -20,6 +20,10 @@ m10:
 	time python -m src.main10
 m11:
 	time python -m src.main11
+m12:
+	time python -m src.main12
+m13:
+	time python -m src.main13
 all:
 	time python -m src.main01
 	time python -m src.main02
@@ -32,3 +36,4 @@ all:
 	time python -m src.main09
 	time python -m src.main10
 	time python -m src.main11
+	time python -m src.main12

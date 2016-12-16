@@ -11,7 +11,7 @@ db = motor.MotorClient().test
 
 @gen.coroutine
 def loop_example():
-    cursor = db.test.find()
+    cursor = db.test.find(limit=10)
     as_list = []
     while (yield cursor.fetch_next):
         doc = cursor.next_object()
