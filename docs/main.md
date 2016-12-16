@@ -151,4 +151,21 @@ tornado 中的 coroutine 识别 list  或 dict ，只要他们都返回的是 fu
 **looping**
 
 
+### main13 
 
+**interleing**
+
+### main14
+
+the simplest synchronous model
+
+### main15
+
+multi-threaded synchronous model
+
+join方法的作用是阻塞主进程（挡住，无法执行join以后的语句），专注执行多线程，多线程多join的情况下，依次执行各线程的join方法，前头一个结束了才能执行后面一个。无参数，则等待到该线程结束，才开始执行下一个线程的join，设置参数后，则等待该线程这么长时间就不管它了（而该线程并没有结束）。不管的意思就是可以执行后面的主进程了。如果主线程还有其它的事情要做可以不join。
+
+
+### main16
+
+文件加锁
