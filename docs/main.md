@@ -169,3 +169,8 @@ join方法的作用是阻塞主进程（挡住，无法执行join以后的语句
 ### main16
 
 文件加锁
+
+### main17 
+
+tornado 中使用celery 完成异步任务, 在 tornado 中没有办法直接使用  tornado.gen.Task 封装 celery task 函数进行异步调用，tornado-celery 这个库做了这件事，可以记住 tornado-celery 来使用 coroutine 
+

@@ -24,6 +24,14 @@ m12:
 	time python -m src.main12
 m13:
 	time python -m src.main13
+m14:
+	time python -m src.main14
+m15:
+	time python -m src.main15
+m17:
+	time python -m src.main17
+task:
+	time celery -A src.task.app worker --loglevel=info
 all:
 	time python -m src.main01
 	time python -m src.main02
