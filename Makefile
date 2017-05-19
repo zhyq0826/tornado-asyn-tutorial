@@ -30,6 +30,8 @@ m15:
 	time python -m src.main15
 m17:
 	time python -m src.main17
+m19:
+	time python -m src.main19
 task:
 	time celery -A src.task.app worker --loglevel=info
 m18:
